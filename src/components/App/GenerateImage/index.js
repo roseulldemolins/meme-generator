@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { MemeContext } from '../../../context/MemeContext';
-import htmlToImage from 'html-to-image';
+import * as htmlToImage from 'html-to-image';
 import Button from '../../global/Button';
 import Wrapper from './Wrapper';
 import Meme from './Meme';
@@ -12,6 +12,7 @@ export const GenerateImage = () => {
 
     // Local state
     const [image, setImage] = useState(null);
+
 
     // Methods
     const generateMeme = () => {
@@ -26,7 +27,8 @@ export const GenerateImage = () => {
             .catch(function (error) {
                 console.error('We have a problem:', error);
             });
-    };
+        }
+
 
     const resetMeme = () => {
         meme.dispatch({ type: 'RESET_MEME' });
@@ -35,6 +37,8 @@ export const GenerateImage = () => {
     const closeMeme = () => {
         setImage(null);
     };
+
+    
 
     // Render
     let memeImage;
