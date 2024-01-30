@@ -63,6 +63,9 @@ export const GenerateImage = () => {
                 Reset MEME settings
             </Button>
             {memeImage}
+            <Button>
+                Hi
+            </Button>
         </Wrapper>
     );
 };
