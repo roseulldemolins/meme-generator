@@ -12,6 +12,7 @@ const UpdateImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
+
     // Set focus at first text input after setting the meme image
     useEffect(() => {
         const firstInput = document.getElementById('text-top');
@@ -21,15 +22,23 @@ const UpdateImage = () => {
 
     // Methods
     const handleLocalImage = e => {
+
+        console.log(e.target.files[0]);
+
         const img = e.target.files[0];
+
         const newImage = {
             name: img.name,
             size: img.size,
             path: URL.createObjectURL(img),
         };
 
+        console.log(newImage.path);
+
         if (!meme.state.imageSelected) {
+
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
+
             console.log("UpdateImage", meme.state.imageSelected);
 
         }
@@ -44,12 +53,16 @@ const UpdateImage = () => {
         label = <NoImage>Upload an image from your computer</NoImage>;
     }
 
+
     return (
         <ImageWrapper>
             <ImageLabel active={meme.state.imageSelected !== null}>
                 {label}
             </ImageLabel>
-            <ImageInput onChange={handleLocalImage} />
+
+            {/* the corresponding input component needs to have the onClick atribute set to 
+            null the value of the event object ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component */}
+            <ImageInput onChange={handleLocalImage} onClick={(e)=> {e.currentTarget.value = null}}/>
             {caption}
         </ImageWrapper>
     );
