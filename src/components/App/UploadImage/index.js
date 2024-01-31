@@ -21,16 +21,6 @@ const UpdateImage = () => {
         firstInput.select();
     }, [meme.state.imageSelected]);
 
-    // Methods
-    // const handleFocusBack= () => {
-    // console.log('focus-back');
-    // window.removeEventListener('focus', this.handleFocusBack);
-    // }
-    // const clickedFileInput= () =>{
-    // window.addEventListener('focus', this.handleFocusBack);
-    // console.log('has been clicked')
-    // }
-
     const handleLocalImage = e => {
         const img = e.target.files[0];
         const newImage = {
