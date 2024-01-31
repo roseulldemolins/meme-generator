@@ -6,6 +6,7 @@ const initialState = {
     topTextPosX: 0,
     topTextSize: 2,
     bottomText: 'Bottom Text',
+    textAlign: 'center',
     bottomTextPos: 5,
     bottomTextPosX: 0,
     bottomTextSize: 2,
@@ -43,16 +44,21 @@ const StateProvider = ({ children }) => {
                     ...state,
                     bottomTextPos: action.payload,
                 };
-                case 'UPDATE_TOP_POS_X':
+            case 'UPDATE_TOP_POS_X':
                 return {
                     ...state,
                     topTextPosX: action.payload
                 };
-                case 'UPDATE_BOTTOM_POS_X':
+            case 'UPDATE_BOTTOM_POS_X':
                 return {
                     ...state,
                     bottomTextPosX: action.payload
                 };
+            case 'UPDATE_TEXT_ALIGN':
+                    return {
+                        ...state,
+                        textAlign: action.payload
+                    };
             case 'UPDATE_TOP_SIZE':
                 return {
                     ...state,

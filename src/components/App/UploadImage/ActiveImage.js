@@ -17,7 +17,7 @@ const Text = styled.div`
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
-    text-align: center;
+    text-align:  ${props => props.align};
     line-height: 1.2;
     font-weight: ${({ theme }) => theme.typography.bold};
     font-size: ${props => props.fsize}em;
@@ -62,6 +62,7 @@ const ActiveImage = () => {
                     posPlace={meme.state.topTextPos}
                     posPlaceX={meme.state.topTextPosX}
                     fsize={meme.state.topTextSize}
+                    align={meme.state.textAlign}
                     outside={meme.state.textOutside}
                     fontFamily={meme.state.fontSelected}
                 >
@@ -78,6 +79,7 @@ const ActiveImage = () => {
                     posPlace={meme.state.bottomTextPos}
                     posPlaceX={meme.state.bottomTextPosX}
                     fsize={meme.state.bottomTextSize}
+                    align={meme.state.textAlign}
                     outside={meme.state.textOutside}
                     fontFamily={meme.state.fontSelected}
                 >
