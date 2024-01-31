@@ -9,7 +9,7 @@ export default {
         default: '#f1fa8c',
         primary: '#8be9fd',
         secondary: '#bd93f9',
-        tertiary: '#ff79c6',
+        tertiary: '#FAADF1',
         quaternary: '#50fa7b',
         error: '#ff5555',
     },

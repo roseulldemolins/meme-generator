@@ -33,6 +33,18 @@ const TextImage = () => {
         }
     };
 
+    //add x-position for text
+    const handleTextPosXAxis = (e, pos) => {
+        if (pos === 'top') {
+            meme.dispatch({ type: 'UPDATE_TOP_POS_X', payload: e.target.value });
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_BOTTOM_POS_X',
+                payload: e.target.value,
+            });
+        }
+    };
+
     const handleTextSize = (e, pos) => {
         if (pos === 'top') {
             meme.dispatch({ type: 'UPDATE_TOP_SIZE', payload: e.target.value });
@@ -77,7 +89,7 @@ const TextImage = () => {
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-top">
-                        Text position <span>[ {meme.state.topTextPos} ]</span>
+                        Text position Y-Axis <span>[ {meme.state.topTextPos} ]</span>
                     </Label>
                     <Range
                         id="pos-top"
@@ -88,6 +100,23 @@ const TextImage = () => {
                             !meme.state.imageSelected || meme.state.textOutside
                         }
                         onChange={e => handleTextPos(e, 'top')}
+                    />
+                </div>
+
+                {/* For changing x-position of text */}
+                <div className={meme.state.textOutside ? 'inactive' : ''}>
+                    <Label htmlFor="pos-top-X">
+                        Text position X-Axis <span>[ {meme.state.topTextPosX} ]</span>
+                    </Label>
+                    <Range
+                        id="pos-top-X"
+                        min="-30"
+                        max="30"
+                        value={meme.state.topTextPosX}
+                        disabled={
+                            !meme.state.imageSelected || meme.state.textOutside
+                        }
+                        onChange={e => handleTextPosXAxis(e, 'top')}
                     />
                 </div>
                 <div>
@@ -123,7 +152,7 @@ const TextImage = () => {
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-bottom">
-                        Text position{' '}
+                        Text position Y-Axis {' '}
                         <span>[ {meme.state.bottomTextPos} ]</span>
                     </Label>
                     <Range
@@ -135,6 +164,22 @@ const TextImage = () => {
                             !meme.state.imageSelected || meme.state.textOutside
                         }
                         onChange={e => handleTextPos(e, 'bottom')}
+                    />
+                </div>
+                {/* For changing x-position of text */}
+                <div className={meme.state.textOutside ? 'inactive' : ''}>
+                    <Label htmlFor="pos-bottom-X">
+                        Text position X-Axis <span>[ {meme.state.bottomTextPosX} ]</span>
+                    </Label>
+                    <Range
+                        id="pos-bottom-X"
+                        min="-30"
+                        max="30"
+                        value={meme.state.bottomTextPosX}
+                        disabled={
+                            !meme.state.imageSelected || meme.state.textOutside
+                        }
+                        onChange={e => handleTextPosXAxis(e, 'bottom')}
                     />
                 </div>
                 <div>
