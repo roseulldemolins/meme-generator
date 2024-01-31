@@ -255,35 +255,37 @@ const TextImage = () => {
                 </Label>
 
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <IconButton aria-label="text-align-left">
-                        <FormatAlignLeftIcon 
-                            id="left-align"
+                    <IconButton
+                            id="left-align" 
                             disabled={
-                                !meme.state.imageSelected || meme.state.textOutside
+                                !meme.state.imageSelected
                             }
+                            aria-label="text-align-left">
+                        <FormatAlignLeftIcon 
                             color="secondary" 
                             onClick = {() => handleTextAlignment('left')}/>
                     </IconButton>
-                    <IconButton aria-label="text-align-center">
-                        <FormatAlignCenterIcon 
+                    <IconButton
                             id="center-align"
                             disabled={
-                                !meme.state.imageSelected || meme.state.textOutside
+                                !meme.state.imageSelected
                             }
+                            aria-label="text-align-center">
+                        <FormatAlignCenterIcon 
                             color="secondary" 
                             onClick = {() => handleTextAlignment('center')}/>
                     </IconButton>
-                    <IconButton aria-label="text-align-right">
-                        <FormatAlignRightIcon
+                    <IconButton 
                             id="right-align"
                             disabled={
-                                !meme.state.imageSelected || meme.state.textOutside
+                                !meme.state.imageSelected
                             }
+                            aria-label="text-align-right">
+                        <FormatAlignRightIcon
                             color="secondary" 
                             onClick = {() => handleTextAlignment('right')}/>
                     </IconButton>
                 </ButtonGroup>
-        
             </WrapInput>
 
             
