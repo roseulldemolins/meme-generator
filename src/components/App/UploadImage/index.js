@@ -29,8 +29,14 @@ const UpdateImage = () => {
             path: URL.createObjectURL(img),
         };
 
+        //newImage.name? img.name: "default";
+
+        if (!meme.state.imageSelected) {
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
-    };
+        }
+        };
+   
+
 
     // Render
     let label, caption;
@@ -47,7 +53,7 @@ const UpdateImage = () => {
             <ImageLabel active={meme.state.imageSelected !== null}>
                 {label}
             </ImageLabel>
-            <ImageInput  onChange={handleLocalImage} onClick={(e)=> e.currentTarget.value = null}/>
+            <ImageInput  onChange={handleLocalImage}  onClick={e=> e.currentTarget.value = null}/>
             {caption}
         </ImageWrapper>
     );
