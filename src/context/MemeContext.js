@@ -12,6 +12,7 @@ const initialState = {
     textOutside: false,
     imageSelected: null,
     blackAndWhite: false,
+    fontSelected:null,
     filename: 'my-awesome-meme'
 };
 
@@ -76,6 +77,11 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     imageSelected: action.payload,
+                };
+            case 'TEXT_FONT':
+                return {
+                    ...state,
+                    fontSelected: action.payload,
                 };
             case 'UPDATE_FILENAME':
                 return {

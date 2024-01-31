@@ -78,6 +78,11 @@ const TextImage = () => {
         }
     };
 
+    const handleTextFont = (e) =>{
+        console.log(e.target.value)
+        meme.dispatch({type: 'TEXT_FONT', payload: e.target.value})
+    }
+
     const handleBlackAndWhiteToggle = e => {
         meme.dispatch({type: 'BLACK_WHITE'});
 
@@ -110,6 +115,20 @@ const TextImage = () => {
                     value={meme.state.topText}
                     disabled={!meme.state.imageSelected}
                 />
+            </WrapInput>
+
+            <WrapInput>
+                <div>
+                    <Label htmlFor='font-top'>
+                        Font
+                    </Label>
+                    <select name='font' onChange={e => handleTextFont(e)} disabled={!meme.state.imageSelected}>
+                        <option className='montserrat' value={"'Montserrat', sans-serif"}>Montserrat</option>
+                        <option className='single' value={"'Single Day', cursive"}>Single Day</option>
+                        <option className='roboto' value={"'Roboto', sans-serif"}>roboto</option>
+                        <option className='dancing' value={"'Dancing Script', cursive"}>dancing-script</option>
+                    </select>
+                </div>
             </WrapInput>
 
             <WrapInput flex>
