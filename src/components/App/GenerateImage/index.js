@@ -4,6 +4,7 @@ import * as htmlToImage from 'html-to-image';
 import Button from '../../global/Button';
 import Wrapper from './Wrapper';
 import Meme from './Meme';
+import { func } from 'prop-types';
 
 export const GenerateImage = () => {
     // Global state
@@ -14,9 +15,14 @@ export const GenerateImage = () => {
     const [image, setImage] = useState(null);
 
     // Methods
-    function generateMeme() {
-        htmlToImage
-            .toPng(document.getElementById('active-image'))
+
+   
+    function generateMeme(s) {
+        console.log(s)
+        htmlToImage 
+            .toJpeg(document.getElementById('active-image'), s)
+           
+
             .then(function (dataUrl) {
                 var img = new Image();
                 img.src = dataUrl;
@@ -41,7 +47,13 @@ export const GenerateImage = () => {
     const validateInput = () => {
         // Validate that the filename given is not empty and contains 15 characters or less
         var filenameInput = document.getElementById('filenameInput').value;
-        if (filenameInput !== "" && filenameInput.length <= 15) {
+        if (filenameInput !== "" && filenameInput.length <= 15) { 
+            let style = {style:{filter: "grayscale(1)"}}
+            console.log(meme.blackAndWhite)
+            if (meme.state.blackAndWhite) generateMeme(style)
+
+            else
+        
             generateMeme();
         }
         else {

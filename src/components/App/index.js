@@ -54,8 +54,8 @@ const App = () => {
                     
                         <UploadImage />
 
-                        <TextImage />
-                    </MainContent>
+            <TextImage />
+          </MainContent>
 
                     <GenerateImage />
                 </StateProvider>
