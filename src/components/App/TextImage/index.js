@@ -8,7 +8,12 @@ import Label from '../../global/form/Label';
 import Input from '../../global/form/Input';
 import Range from '../../global/form/Range';
 import Switch from '../../global/form/Switch';
-import Radio from '../../global/form/Radio';
+import { ButtonGroup, IconButton } from '@mui/material';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+
+
 
 
 
@@ -72,7 +77,7 @@ const TextImage = () => {
     //add alignment for text
     const handleTextAlignment = (align) => {
 
-        //Set X values to zero
+        //Set x-axis values to zero
         meme.dispatch({ type: 'UPDATE_TOP_POS_X', payload: 0});
         meme.dispatch({ type: 'UPDATE_BOTTOM_POS_X', payload: 0});
 
@@ -248,31 +253,37 @@ const TextImage = () => {
                 <Label htmlFor="text-align">
                             Text Align <span>[ {meme.state.textAlign} ]</span>
                 </Label>
-                <Radio 
-                        id="left-bottom-X"
-                        value="Align Left"
-                        disabled={
-                            !meme.state.imageSelected || meme.state.textOutside
-                        }
-                        onClick = {() => handleTextAlignment('left')}
-                        />
-                <Radio 
-                        id="center-bottom-X"
-                        value="Align Center"
-                        disabled={
-                            !meme.state.imageSelected || meme.state.textOutside
-                        }
-                        onClick = {() => handleTextAlignment('center')}
-                />
-                <Radio 
-                        id="center-right-X"
-                        value="Align Right"
-                        disabled={
-                            !meme.state.imageSelected || meme.state.textOutside
-                        }
-                        onClick = {() => handleTextAlignment('right')}
-                />
 
+                <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                    <IconButton aria-label="text-align-left">
+                        <FormatAlignLeftIcon 
+                            id="left-align"
+                            disabled={
+                                !meme.state.imageSelected || meme.state.textOutside
+                            }
+                            color="secondary" 
+                            onClick = {() => handleTextAlignment('left')}/>
+                    </IconButton>
+                    <IconButton aria-label="text-align-center">
+                        <FormatAlignCenterIcon 
+                            id="center-align"
+                            disabled={
+                                !meme.state.imageSelected || meme.state.textOutside
+                            }
+                            color="secondary" 
+                            onClick = {() => handleTextAlignment('center')}/>
+                    </IconButton>
+                    <IconButton aria-label="text-align-right">
+                        <FormatAlignRightIcon
+                            id="right-align"
+                            disabled={
+                                !meme.state.imageSelected || meme.state.textOutside
+                            }
+                            color="secondary" 
+                            onClick = {() => handleTextAlignment('right')}/>
+                    </IconButton>
+                </ButtonGroup>
+        
             </WrapInput>
 
             
