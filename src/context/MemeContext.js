@@ -9,6 +9,7 @@ const initialState = {
     bottomTextSize: 2,
     textOutside: false,
     imageSelected: null,
+    filename: 'my-awesome-meme'
 };
 
 const MemeContext = createContext(initialState);
@@ -57,6 +58,11 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     imageSelected: action.payload,
+                };
+            case 'UPDATE_FILENAME':
+                return {
+                    ...state,
+                    filename: action.payload,
                 };
             case 'RESET_MEME':
                 return initialState;

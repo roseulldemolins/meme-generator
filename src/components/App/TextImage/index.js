@@ -49,6 +49,10 @@ const TextImage = () => {
         meme.dispatch({ type: 'TEXT_OUTSIDE' });
     };
 
+    const handleFilename = e => {
+        meme.dispatch({ type: 'UPDATE_FILENAME', payload: e.target.value });
+    };
+
     // Render
     return (
         <TextWrapper className={meme.state.imageSelected ? 'active' : ''}>
@@ -161,6 +165,22 @@ const TextImage = () => {
             </WrapInput>
 
             <TextLegenda>* Both of the above texts are optional.</TextLegenda>
+
+            {/* Filename input */}
+            <WrapInput>
+                <br />
+                <Label primary htmlFor="filenameInput">
+                    Filename
+                </Label>
+                <Input
+                    intype="text"
+                    max="15"
+                    id="filenameInput"
+                    onChange={handleFilename}
+                    value={meme.state.filename}
+                    disabled={!meme.state.imageSelected}
+                />
+            </WrapInput>
         </TextWrapper>
     );
 };
