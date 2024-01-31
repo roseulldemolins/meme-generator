@@ -23,8 +23,6 @@ const UpdateImage = () => {
     // Methods
     const handleLocalImage = e => {
 
-        console.log(e.target.files[0]);
-
         const img = e.target.files[0];
 
         const newImage = {
@@ -33,13 +31,10 @@ const UpdateImage = () => {
             path: URL.createObjectURL(img),
         };
 
-        console.log(newImage.path);
 
         if (!meme.state.imageSelected) {
 
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
-
-            console.log("UpdateImage", meme.state.imageSelected);
 
         }
     };

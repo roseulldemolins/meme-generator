@@ -32,9 +32,6 @@ export const GenerateImage = () => {
     const resetMeme = () => {
         meme.dispatch({ type: 'RESET_MEME' });
         setImage(null);
-        console.log("GenerateImage", meme.state.imageSelected.name);
-        console.log("GenerateImage", meme.state.imageSelected.path);
-
     };
 
     const closeMeme = () => {

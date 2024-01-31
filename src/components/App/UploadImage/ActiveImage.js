@@ -49,9 +49,6 @@ const ActiveImage = () => {
     // Global state
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
-    
-    console.log(meme.state.imageSelected.name)
-    console.log(meme.state.imageSelected.path)
 
     return (
         <Wrapper>
