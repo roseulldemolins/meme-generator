@@ -7,6 +7,7 @@ const initialState = {
     bottomText: 'Bottom Text',
     bottomTextPos: 5,
     bottomTextSize: 2,
+    textAlignment: 'center',
     textOutside: false,
     imageSelected: null,
 };
@@ -37,6 +38,16 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     bottomTextPos: action.payload,
+                };
+            case 'UPDATE_TOP_ALIGN':
+                return {
+                    ...state,
+                    textAlignment: action.payload,
+                };
+            case 'UPDATE_BOTTOM_AlIGN':
+                return {
+                    ...state,
+                    textAlignment: action.payload,
                 };
             case 'UPDATE_TOP_SIZE':
                 return {

@@ -9,6 +9,7 @@ import Input from '../../global/form/Input';
 import Range from '../../global/form/Range';
 import Switch from '../../global/form/Switch';
 
+
 const TextImage = () => {
     // Global state
     // state to read and dispatch to modify
@@ -32,7 +33,7 @@ const TextImage = () => {
             });
         }
     };
-
+    
     const handleTextSize = (e, pos) => {
         if (pos === 'top') {
             meme.dispatch({ type: 'UPDATE_TOP_SIZE', payload: e.target.value });
@@ -148,6 +149,11 @@ const TextImage = () => {
                     />
                 </div>
             </WrapInput>
+
+            {/* Text alignment buttons */}
+          
+            
+            
 
             {/* Text outside */}
             <WrapInput>

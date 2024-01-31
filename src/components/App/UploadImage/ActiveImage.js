@@ -17,7 +17,7 @@ const Text = styled.div`
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
-    text-align: left;
+    text-align:  center;
     line-height: 1.2;
     font-weight: ${({ theme }) => theme.typography.bold};
     font-size: ${props => props.fsize}em;
