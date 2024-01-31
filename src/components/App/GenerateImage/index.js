@@ -4,6 +4,7 @@ import * as htmlToImage from 'html-to-image';
 import Button from '../../global/Button';
 import Wrapper from './Wrapper';
 import Meme from './Meme';
+import { func } from 'prop-types';
 
 export const GenerateImage = () => {
     // Global state
@@ -14,9 +15,11 @@ export const GenerateImage = () => {
     const [image, setImage] = useState(null);
 
     // Methods
+
+   
     function generateMeme() {
         htmlToImage
-            .toPng(document.getElementById('active-image'))
+            .toJpeg(document.getElementById('active-image'), {style:{filter:"grayscale(1)"}})
             .then(function (dataUrl) {
                 var img = new Image();
                 img.src = dataUrl;
