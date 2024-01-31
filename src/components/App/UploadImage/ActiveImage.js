@@ -13,7 +13,9 @@ const Wrapper = styled.div.attrs({
 `;
 
 const Text = styled.div`
-    position: ${props => (props.outside ? 'static' : 'absolute')}; 
+    position: ${props => (props.outside ? 'static' : 'absolute')};
+    left: 0;
+    color:rgb(255, 255, 255);
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
@@ -28,6 +30,7 @@ const Text = styled.div`
         css`
             top: ${props => props.posPlace}%;
             left: ${props => props.posPlaceX}%;
+            color:${props.posColour};
         `}
     ${props =>
         !props.outside &&
@@ -35,6 +38,7 @@ const Text = styled.div`
         css`
             bottom: ${props => props.posPlace}%;
             left: ${props => props.posPlaceX}%;
+            color: ${props.posColour}
         `}
 `;
 
@@ -59,6 +63,7 @@ const ActiveImage = () => {
                     pos="top"
                     posPlace={meme.state.topTextPos}
                     posPlaceX={meme.state.topTextPosX}
+                    posColour={meme.state.topTextColour}
                     fsize={meme.state.topTextSize}
                     outside={meme.state.textOutside}
                 >
@@ -74,6 +79,7 @@ const ActiveImage = () => {
                     pos="bottom"
                     posPlace={meme.state.bottomTextPos}
                     posPlaceX={meme.state.bottomTextPosX}
+                    posColour={meme.state.topTextColour}
                     fsize={meme.state.bottomTextSize}
                     outside={meme.state.textOutside}
                 >

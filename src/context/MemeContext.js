@@ -5,10 +5,12 @@ const initialState = {
     topTextPos: 5,
     topTextPosX: 0,
     topTextSize: 2,
+    topTextColour:"rgb(255, 255, 255)",
     bottomText: 'Bottom Text',
     bottomTextPos: 5,
     bottomTextPosX: 0,
     bottomTextSize: 2,
+    bottomTextColour:"rgb(255, 255, 255)",
     textOutside: false,
     imageSelected: null,
     filename: 'my-awesome-meme'
@@ -60,6 +62,16 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     bottomTextSize: action.payload,
+                };
+                case 'UPDATE_TOP_COLOUR':
+                return {
+                    ...state,
+                    topTextColour: action.payload,
+                };
+            case 'UPDATE_BOTTOM_COLOUR':
+                return {
+                    ...state,
+                    bottomTextColour: action.payload,
                 };
             case 'TEXT_OUTSIDE':
                 return {

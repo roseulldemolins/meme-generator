@@ -37,7 +37,36 @@ const TextImage = () => {
         });
         return output.join(' ')
     }
+    const handleTopColour = (pos) => {
+        let colorval = document.getElementById("clr-picker")
+        if (pos === 'top') {
+            meme.dispatch({ type: 'UPDATE_TOP_COLOUR', payload: colorval.style.color });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_TOP_COLOUR',
+                payload: colorval.style.color,
+            });
+            colorval=null;
+        }
 
+    }
+    
+    const handleBottomColour = (pos) => {
+        alert("Reached");
+        let colorval = document.getElementById("clr-picker")
+        if (pos === 'bottom') {
+            meme.dispatch({ type: 'UPDATE_BOTTOM_COLOUR', payload: colorval.style.color });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_BOTTOM_COLOUR',
+                payload: colorval.style.color,
+            });
+            colorval=null;
+        }
+        
+    }
     const handleBottomText = input => {
         meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInString(input,meme.state.bottomTextSize) });
     };
@@ -153,6 +182,13 @@ const TextImage = () => {
                         disabled={!meme.state.imageSelected}
                         onChange={e => handleTextSize(e, 'top')}
                     />
+                </div>
+                <div id ="colour-top">
+                    <Label htmlFor="colour-top">
+                    Text Colour <span>[{meme.state.topTextColour}]</span>
+                    </Label>
+                    <Input id = "colour-top-picker" type="text" data-coloris />
+                    <Switch className="top-switch"id ="colour-top" onSwitch={()=>handleTopColour("top")}></Switch>
                 </div>
             </WrapInput>
 
