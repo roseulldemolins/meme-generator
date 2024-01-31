@@ -8,8 +8,7 @@ import ImageCaption from './ImageCaption';
 import ActiveImage from './ActiveImage';
 import NoImage from './NoImage';
 
-
-const UpdateImage = () => {
+const  UpdateImage = () => {
     // Global state
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
