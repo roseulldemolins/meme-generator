@@ -4,11 +4,13 @@ const initialState = {
     topText: 'Top Text',
     topTextPos: 5,
     topTextSize: 2,
+    topTextColour:"rgb(255, 255, 255)",
     bottomText: 'Bottom Text',
     bottomTextPos: 5,
     bottomTextSize: 2,
+    bottomTextColour:"rgb(255, 255, 255)",
     textOutside: false,
-    imageSelected: null,
+    imageSelected: null
 };
 
 const MemeContext = createContext(initialState);
@@ -47,6 +49,16 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     bottomTextSize: action.payload,
+                };
+                case 'UPDATE_TOP_COLOUR':
+                return {
+                    ...state,
+                    topTextColour: action.payload,
+                };
+            case 'UPDATE_BOTTOM_COLOUR':
+                return {
+                    ...state,
+                    bottomTextColour: action.payload,
                 };
             case 'TEXT_OUTSIDE':
                 return {

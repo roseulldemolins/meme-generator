@@ -17,7 +17,36 @@ const TextImage = () => {
     const handleTopText = e => {
         meme.dispatch({ type: 'UPDATE_TOP', payload: e.target.value });
     };
+    const handleTopColour = (pos) => {
+        let colorval = document.getElementById("clr-picker")
+        if (pos === 'top') {
+            meme.dispatch({ type: 'UPDATE_TOP_COLOUR', payload: colorval.style.color });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_TOP_COLOUR',
+                payload: colorval.style.color,
+            });
+            colorval=null;
+        }
 
+    }
+    
+    const handleBottomColour = (pos) => {
+        alert("Reached");
+        let colorval = document.getElementById("clr-picker")
+        if (pos === 'bottom') {
+            meme.dispatch({ type: 'UPDATE_BOTTOM_COLOUR', payload: colorval.style.color });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_BOTTOM_COLOUR',
+                payload: colorval.style.color,
+            });
+            colorval=null;
+        }
+        
+    }
     const handleBottomText = e => {
         meme.dispatch({ type: 'UPDATE_BOTTOM', payload: e.target.value });
     };
@@ -47,6 +76,7 @@ const TextImage = () => {
     const handleTextOutside = e => {
         console.log(e.target.value);
         meme.dispatch({ type: 'TEXT_OUTSIDE' });
+        
     };
 
     // Render
@@ -100,6 +130,13 @@ const TextImage = () => {
                         onChange={e => handleTextSize(e, 'top')}
                     />
                 </div>
+                <div id ="colour-top">
+                    <Label htmlFor="colour-top">
+                    Text Colour <span>[{meme.state.topTextColour}]</span>
+                    </Label>
+                    <Input id = "colour-top-picker" type="text" data-coloris />
+                    <Switch className="top-switch"id ="colour-top" onSwitch={()=>handleTopColour("top")}></Switch>
+                </div>
             </WrapInput>
 
             {/* Bottom Text */}
@@ -118,7 +155,7 @@ const TextImage = () => {
 
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
-                    <Label htmlFor="pos-bottom">
+                    <Label htmlFor="pos-bottom" >
                         Text position{' '}
                         <span>[ {meme.state.bottomTextPos} ]</span>
                     </Label>
