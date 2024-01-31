@@ -41,6 +41,11 @@ const Close = styled.div`
     cursor: pointer;
 `;
 
+function getFilename() {
+    var filename = document.getElementById("filenameInput").value + '.png';
+    return filename;
+}
+
 export const Meme = ({ path, close }) => {
     return (
         <Wrapper onClick={close}>
@@ -48,7 +53,7 @@ export const Meme = ({ path, close }) => {
                 <MemeTitle as="h4" fsize="1.5" margin="0 0 2rem">
                     Click the image to download
                 </MemeTitle>
-                <a href={path} download="my-awesome-meme.png">
+                <a href={path} download={getFilename()}>
                     <Image src={path} alt="Generated Meme" />
                 </a>
             </InnerContainer>

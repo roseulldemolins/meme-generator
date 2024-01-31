@@ -8,6 +8,7 @@ const Wrapper = styled.div.attrs({
 })`
     position: relative;
     width: 100%;
+    overflow: hidden;
     background: ${({ theme }) => theme.colors.black};
 `;
 
