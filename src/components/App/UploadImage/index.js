@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { MemeContext } from '../../../context/MemeContext';
+
 import ImageWrapper from './ImageWrapper';
 import ImageLabel from './ImageLabel';
 import ImageInput from './ImageInput';
 import ImageCaption from './ImageCaption';
 import ActiveImage from './ActiveImage';
 import NoImage from './NoImage';
+
 
 const UpdateImage = () => {
     // Global state
@@ -20,7 +22,6 @@ const UpdateImage = () => {
         firstInput.select();
     }, [meme.state.imageSelected]);
 
-    // Methods
     const handleLocalImage = e => {
 
         const img = e.target.files[0];
@@ -37,7 +38,9 @@ const UpdateImage = () => {
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
 
         }
-    };
+        };
+   
+
 
     // Render
     let label, caption;
@@ -46,6 +49,7 @@ const UpdateImage = () => {
         caption = <ImageCaption />;
     } else {
         label = <NoImage>Upload an image from your computer</NoImage>;
+       
     }
 
 
