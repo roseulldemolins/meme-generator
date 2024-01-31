@@ -3,7 +3,6 @@ import { MemeContext } from '../../../context/MemeContext';
 import ImageWrapper from './ImageWrapper';
 import ImageLabel from './ImageLabel';
 import ImageInput from './ImageInput';
-import ImageCaption from './ImageCaption';
 import ActiveImage from './ActiveImage';
 import NoImage from './NoImage';
 
@@ -23,34 +22,61 @@ const UpdateImage = () => {
     // Methods
     const handleLocalImage = e => {
 
-        const img = e.target.files[0];
-
-        const newImage = {
-            name: img.name,
-            size: img.size,
-            path: URL.createObjectURL(img),
-        };
-
+        const images = e.target.files; 
+        
+        const newImages = createImagesArray(images);
 
         if (!meme.state.imageSelected) {
 
-            meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
+            meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImages });
 
         }
     };
 
+     //helper methods
+     const createImagesArray = (images) =>{
+        
+        const newImages = [];
+
+        newImages.push({
+            name: images[0].name,
+            size: images[0].size,
+            path: URL.createObjectURL(images[0])
+        });
+
+        newImages.push({
+            name: images[1].name,
+            size: images[1].size,
+            path: URL.createObjectURL(images[1])
+        });
+
+        //code to work with all seleted images
+        // for(let i=0; i < images.length; i++){
+        //     let image = {
+        //         name: null,
+        //         size: null,
+        //         path: null
+        //     }
+        //     image.name = images[i].name;
+        //     image.size = images[i].size;
+        //     image.path = URL.createObjectURL(images[i]);
+        //     newImages.push(image);
+        // }
+
+        return newImages;
+     }
+
     // Render
-    let label, caption;
+    let label;
     if (meme.state.imageSelected) {
         label = <ActiveImage />;
-        caption = <ImageCaption />;
     } else {
         label = <NoImage>Upload an image from your computer</NoImage>;
     }
 
-
     return (
         <ImageWrapper>
+
             <ImageLabel active={meme.state.imageSelected !== null}>
                 {label}
             </ImageLabel>
@@ -58,7 +84,7 @@ const UpdateImage = () => {
             {/* the corresponding input component needs to have the onClick atribute set to 
             null the value of the event object ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component */}
             <ImageInput onChange={handleLocalImage} onClick={(e)=> {e.currentTarget.value = null}}/>
-            {caption}
+
         </ImageWrapper>
     );
 };

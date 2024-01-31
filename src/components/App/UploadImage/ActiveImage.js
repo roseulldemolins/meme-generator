@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { MemeContext } from '../../../context/MemeContext';
 import styled, { css } from 'styled-components';
+import ImageCaption from './ImageCaption';
+import shortid from 'shortid';
 
 // Sub components
 const Wrapper = styled.div.attrs({
@@ -50,34 +52,42 @@ const ActiveImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
-    return (
-        <Wrapper>
-            {meme.state.topText && (
-                <Text
-                    pos="top"
-                    posPlace={meme.state.topTextPos}
-                    fsize={meme.state.topTextSize}
-                    outside={meme.state.textOutside}
-                >
-                    {meme.state.topText}
-                </Text>
+    console.log(meme.state.imageSelected);
+
+    return ( <>
+            {meme.state.imageSelected.map(image => ( 
+          
+                <Wrapper key={shortid.generate()}>
+                    {meme.state.topText && (
+                        <Text
+                            pos="top"
+                            posPlace={meme.state.topTextPos}
+                            fsize={meme.state.topTextSize}
+                            outside={meme.state.textOutside}
+                            >
+                            {meme.state.topText}
+                        </Text>
+                                )}
+            
+                <Image path={image.path} altimg={image.name}/>
+            
+                    {meme.state.bottomText && (
+                        <Text
+                            pos="bottom"
+                            posPlace={meme.state.bottomTextPos}
+                            fsize={meme.state.bottomTextSize}
+                            outside={meme.state.textOutside}
+                            >
+                            {meme.state.bottomText}
+                        </Text>
+                                )}
+                <ImageCaption image={image}/>
+                
+                </Wrapper>
+          
+                )
             )}
-            <Image
-                path={meme.state.imageSelected.path}
-                altimg={meme.state.imageSelected.name}
-            />
-            {meme.state.bottomText && (
-                <Text
-                    pos="bottom"
-                    posPlace={meme.state.bottomTextPos}
-                    fsize={meme.state.bottomTextSize}
-                    outside={meme.state.textOutside}
-                >
-                    {meme.state.bottomText}
-                </Text>
-            )}
-        </Wrapper>
-    );
+    </> );
 };
 
 export default ActiveImage;
