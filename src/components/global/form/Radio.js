@@ -1,41 +1,15 @@
+
 import styled from 'styled-components';
 
-const Radio = styled.input.attrs({
-    type: 'radio',
-})`
-        height: 1.125rem;
-        width: 1.125rem;
-        border: 1px solid #b9bdcf;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        margin-right: 0.4rem;
-        transition: background 0.15s, border-color 0.15s;
-        padding: 2px;
 
-        &::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            display: block;
-            background: #2266dc;
-            border-radius: 50%;
-            cursor: pointer;
-            transform: scale(0);
-          }
-        
+const Radio = styled.button`
+  color: #BF4F74;
+  font-size: 1em;
+  margin: 1em;
+  padding: 1em 1em;
+  border: 2px solid #BF4F74;
+  border-radius: 3px;
 `;
 
-export default Radio;
 
-/*export const RadioGroup = styled.input`
-  display: none;
-  &:checked + ${Radio} {
-      &::after {
-        transform: scale(1);
-      }
-`;*/
-
-
+  export default Radio;

@@ -12,12 +12,11 @@ const Wrapper = styled.div.attrs({
 `;
 
 const Text = styled.div`
-    position: ${props => (props.outside ? 'static' : 'absolute')};
-    left: 0;
+    position: ${props => (props.outside ? 'static' : 'absolute')}; 
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
-    text-align:  center;
+    text-align:  ${props => props.align};
     line-height: 1.2;
     font-weight: ${({ theme }) => theme.typography.bold};
     font-size: ${props => props.fsize}em;
@@ -27,12 +26,14 @@ const Text = styled.div`
         props.pos === 'top' &&
         css`
             top: ${props => props.posPlace}%;
+            left: ${props => props.posPlaceX}%;
         `}
     ${props =>
         !props.outside &&
         props.pos === 'bottom' &&
         css`
             bottom: ${props => props.posPlace}%;
+            left: ${props => props.posPlaceX}%;
         `}
 `;
 
@@ -56,7 +57,9 @@ const ActiveImage = () => {
                 <Text
                     pos="top"
                     posPlace={meme.state.topTextPos}
+                    posPlaceX={meme.state.topTextPosX}
                     fsize={meme.state.topTextSize}
+                    align={meme.state.textAlign}
                     outside={meme.state.textOutside}
                 >
                     {meme.state.topText}
@@ -70,7 +73,9 @@ const ActiveImage = () => {
                 <Text
                     pos="bottom"
                     posPlace={meme.state.bottomTextPos}
+                    posPlaceX={meme.state.bottomTextPosX}
                     fsize={meme.state.bottomTextSize}
+                    align={meme.state.textAlign}
                     outside={meme.state.textOutside}
                 >
                     {meme.state.bottomText}

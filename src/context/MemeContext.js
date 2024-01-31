@@ -3,11 +3,13 @@ import React, { createContext, useReducer } from 'react';
 const initialState = {
     topText: 'Top Text',
     topTextPos: 5,
+    topTextPosX: 0,
     topTextSize: 2,
     bottomText: 'Bottom Text',
+    textAlign: 'center',
     bottomTextPos: 5,
+    bottomTextPosX: 0,
     bottomTextSize: 2,
-    textAlignment: 'center',
     textOutside: false,
     imageSelected: null,
 };
@@ -39,21 +41,26 @@ const StateProvider = ({ children }) => {
                     ...state,
                     bottomTextPos: action.payload,
                 };
-            case 'UPDATE_TOP_ALIGN':
+            case 'UPDATE_TOP_POS_X':
                 return {
                     ...state,
-                    textAlignment: action.payload,
+                    topTextPosX: action.payload
                 };
-            case 'UPDATE_BOTTOM_AlIGN':
+            case 'UPDATE_BOTTOM_POS_X':
                 return {
                     ...state,
-                    textAlignment: action.payload,
+                    bottomTextPosX: action.payload
                 };
+            case 'UPDATE_TEXT_ALIGN':
+                    return {
+                        ...state,
+                        textAlign: action.payload
+                    };
             case 'UPDATE_TOP_SIZE':
                 return {
                     ...state,
                     topTextSize: action.payload,
-                };
+                    };
             case 'UPDATE_BOTTOM_SIZE':
                 return {
                     ...state,
