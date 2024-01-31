@@ -14,12 +14,32 @@ const TextImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
-    const handleTopText = e => {
-        meme.dispatch({ type: 'UPDATE_TOP', payload: e.target.value });
+    const handleTopText = input => {
+        meme.dispatch({ type: 'UPDATE_TOP', payload: limitWordsInString(input,meme.state.topTextSize) });
     };
 
-    const handleBottomText = e => {
-        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: e.target.value });
+    const limitWordsInString = (inputText,textSize) =>{
+        let words = inputText.split(' ')
+        let output = []
+        //rough calculation for how many characters we can fit in one word based on textsize
+        let maxWordLength = (45 / textSize)-1
+
+        //work out max x offset based on characters in line a line how?
+        
+
+        words.forEach((word,i) => {
+            if(word.length > maxWordLength){
+                let trimmedWord = word.slice(0,maxWordLength)
+                output.push(trimmedWord)
+            }else {
+                output.push(word)
+            }
+        });
+        return output.join(' ')
+    }
+
+    const handleBottomText = input => {
+        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInString(input,meme.state.bottomTextSize) });
     };
 
     const handleTextPos = (e, pos) => {
@@ -48,11 +68,13 @@ const TextImage = () => {
     const handleTextSize = (e, pos) => {
         if (pos === 'top') {
             meme.dispatch({ type: 'UPDATE_TOP_SIZE', payload: e.target.value });
+            handleTopText(meme.state.topText)
         } else {
             meme.dispatch({
                 type: 'UPDATE_BOTTOM_SIZE',
                 payload: e.target.value,
             });
+            handleBottomText(meme.state.bottomText)
         }
     };
 
@@ -79,7 +101,7 @@ const TextImage = () => {
                 <Input
                     intype="text"
                     id="text-top"
-                    onChange={handleTopText}
+                    onChange={e=>handleTopText(e.target.value)}
                     value={meme.state.topText}
                     disabled={!meme.state.imageSelected}
                 />
@@ -142,7 +164,7 @@ const TextImage = () => {
                 <Input
                     intype="text"
                     id="text-bottom"
-                    onChange={handleBottomText}
+                    onChange={e=>handleBottomText(e.target.value)}
                     value={meme.state.bottomText}
                     disabled={!meme.state.imageSelected}
                 />
