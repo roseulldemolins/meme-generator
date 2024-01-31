@@ -34,6 +34,7 @@ const Text = styled.div`
         css`
             bottom: ${props => props.posPlace}%;
         `}
+    font-family: ${props => props.fontFamily}        
 `;
 
 const Image = styled.img.attrs(({ path, altimg }) => ({
@@ -50,6 +51,7 @@ const ActiveImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
+    console.log(meme.state.fontSelected);
     return (
         <Wrapper>
             {meme.state.topText && (
@@ -58,6 +60,7 @@ const ActiveImage = () => {
                     posPlace={meme.state.topTextPos}
                     fsize={meme.state.topTextSize}
                     outside={meme.state.textOutside}
+                    fontFamily={meme.state.fontSelected}
                 >
                     {meme.state.topText}
                 </Text>
@@ -72,6 +75,7 @@ const ActiveImage = () => {
                     posPlace={meme.state.bottomTextPos}
                     fsize={meme.state.bottomTextSize}
                     outside={meme.state.textOutside}
+                    fontFamily={meme.state.fontSelected}
                 >
                     {meme.state.bottomText}
                 </Text>

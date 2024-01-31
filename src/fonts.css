@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400;500;600;700&family=Honk&display=swap');
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.single{
+    font-family: 'Single Day', cursive;
+}
+
+.dancing {
+    font-family: 'Dancing Script', cursive;
+}
+
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}

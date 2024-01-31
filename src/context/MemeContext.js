@@ -9,6 +9,7 @@ const initialState = {
     bottomTextSize: 2,
     textOutside: false,
     imageSelected: null,
+    fontSelected:null
 };
 
 const MemeContext = createContext(initialState);
@@ -57,6 +58,11 @@ const StateProvider = ({ children }) => {
                 return {
                     ...state,
                     imageSelected: action.payload,
+                };
+            case 'TEXT_FONT':
+                return {
+                    ...state,
+                    fontSelected: action.payload,
                 };
             case 'RESET_MEME':
                 return initialState;
