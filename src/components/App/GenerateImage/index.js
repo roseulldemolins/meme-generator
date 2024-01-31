@@ -17,9 +17,12 @@ export const GenerateImage = () => {
     // Methods
 
    
-    function generateMeme() {
-        htmlToImage
-            .toJpeg(document.getElementById('active-image'), {style:{filter:"grayscale(1)"}})
+    function generateMeme(s) {
+        console.log(s)
+        htmlToImage 
+            .toJpeg(document.getElementById('active-image'), s)
+           
+
             .then(function (dataUrl) {
                 var img = new Image();
                 img.src = dataUrl;
@@ -44,7 +47,13 @@ export const GenerateImage = () => {
     const validateInput = () => {
         // Validate that the filename given is not empty and contains 15 characters or less
         var filenameInput = document.getElementById('filenameInput').value;
-        if (filenameInput !== "" && filenameInput.length <= 15) {
+        if (filenameInput !== "" && filenameInput.length <= 15) { 
+            let style = {style:{filter: "grayscale(1)"}}
+            console.log(meme.blackAndWhite)
+            if (meme.state.blackAndWhite) generateMeme(style)
+
+            else
+        
             generateMeme();
         }
         else {
