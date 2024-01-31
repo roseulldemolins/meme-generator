@@ -15,14 +15,18 @@ const TextImage = () => {
     const meme = useContext(MemeContext);
 
     const handleTopText = input => {
-        meme.dispatch({ type: 'UPDATE_TOP', payload: limitWordsInStringByCharacters(input,meme.state.topTextSize) });
+        meme.dispatch({ type: 'UPDATE_TOP', payload: limitWordsInString(input,meme.state.topTextSize) });
     };
 
-    const limitWordsInStringByCharacters = (inputText,textSize) =>{
+    const limitWordsInString = (inputText,textSize) =>{
         let words = inputText.split(' ')
         let output = []
         //rough calculation for how many characters we can fit in one word based on textsize
         let maxWordLength = (45 / textSize)-1
+
+        //work out max x offset based on characters in line a line how?
+        
+
         words.forEach((word,i) => {
             if(word.length > maxWordLength){
                 let trimmedWord = word.slice(0,maxWordLength)
@@ -35,7 +39,7 @@ const TextImage = () => {
     }
 
     const handleBottomText = input => {
-        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInStringByCharacters(input,meme.state.bottomTextSize) });
+        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInString(input,meme.state.bottomTextSize) });
     };
 
     const handleTextPos = (e, pos) => {
