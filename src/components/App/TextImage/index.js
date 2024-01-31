@@ -33,7 +33,7 @@ const TextImage = () => {
         }
     };
 
-    //add y-position for text
+    //add x-position for text
     const handleTextPosXAxis = (e, pos) => {
         if (pos === 'top') {
             meme.dispatch({ type: 'UPDATE_TOP_POS_X', payload: e.target.value });
@@ -55,8 +55,6 @@ const TextImage = () => {
             });
         }
     };
-
-    //change text-color
 
     const handleTextOutside = e => {
         console.log(e.target.value);
