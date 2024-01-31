@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { MemeContext } from '../../../context/MemeContext';
+
 import ImageWrapper from './ImageWrapper';
 import ImageLabel from './ImageLabel';
 import ImageInput from './ImageInput';
 import ImageCaption from './ImageCaption';
 import ActiveImage from './ActiveImage';
 import NoImage from './NoImage';
+
 
 const UpdateImage = () => {
     // Global state
@@ -20,6 +22,15 @@ const UpdateImage = () => {
     }, [meme.state.imageSelected]);
 
     // Methods
+    // const handleFocusBack= () => {
+    // console.log('focus-back');
+    // window.removeEventListener('focus', this.handleFocusBack);
+    // }
+    // const clickedFileInput= () =>{
+    // window.addEventListener('focus', this.handleFocusBack);
+    // console.log('has been clicked')
+    // }
+
     const handleLocalImage = e => {
         const img = e.target.files[0];
         const newImage = {
@@ -28,9 +39,7 @@ const UpdateImage = () => {
             path: URL.createObjectURL(img),
         };
 
-        if (!meme.state.imageSelected) {
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
-        }
     };
 
     // Render
@@ -40,6 +49,7 @@ const UpdateImage = () => {
         caption = <ImageCaption />;
     } else {
         label = <NoImage>Upload an image from your computer</NoImage>;
+       
     }
 
     return (
@@ -47,7 +57,7 @@ const UpdateImage = () => {
             <ImageLabel active={meme.state.imageSelected !== null}>
                 {label}
             </ImageLabel>
-            <ImageInput onChange={handleLocalImage} />
+            <ImageInput  onChange={handleLocalImage} onClick={(e)=> e.currentTarget.value = null}/>
             {caption}
         </ImageWrapper>
     );
