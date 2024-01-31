@@ -13,17 +13,21 @@ import { ThemeProvider } from "styled-components";
 import Switch from '../Switch/Switch';
 const App = () => {
 
+   
     const darkTheme = {
         body: "#1c1c1c",
         title: "#fff",
-       
-        icon: "#b6b6b6",
+       h1: "#Ffc0cb",
+       text: "red"
+        
       };
       const lightTheme = {
-        body: "#fff",
-        title: "#1c1c1c",
-        
-        subtitle: "#333",
+        body: "#ff8fab",
+        title: "#bd93f9",
+        h1: "#bd93f9", 
+        text: "#bd93f9", 
+       
+       
       };
 
       const [theme, setTheme] = useState("dark");
@@ -31,13 +35,14 @@ const App = () => {
     
       const toggleTheme = () => {
         setTheme(isDarkTheme ? "light" : "dark");
+        console.log(isDarkTheme);
       };
     
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <AppWrapper>
-            <Container>
-            
+        <Container >
+        <Switch toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
                 <Title primary fsize="2" margin="0 0 2rem">
                     <Icon src={logo} alt="The MEME Generator" />
                     The MEME Generator
@@ -46,7 +51,7 @@ const App = () => {
                 {/* Shared global state from here on */}
                 <StateProvider>
                     <MainContent>
-                    <Switch toggleTheme={toggleTheme} isDarkTheme={isDarkTheme} />
+                    
                         <UploadImage />
 
                         <TextImage />

@@ -5,6 +5,7 @@ function Switch({ toggleTheme, isDarkTheme }) {
   const [isToggled, setIsToggled] = useState(isDarkTheme);
 
   const onToggle = () => {
+    console.log("TOGGLE");
     setIsToggled(!isToggled);
     toggleTheme();
   };
