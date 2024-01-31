@@ -15,7 +15,7 @@ export const GenerateImage = () => {
 
 
     // Methods
-    const generateMeme = () => {
+    function generateMeme() {
         htmlToImage
             .toPng(document.getElementById('active-image'))
             .then(function (dataUrl) {
@@ -27,7 +27,7 @@ export const GenerateImage = () => {
             .catch(function (error) {
                 console.error('We have a problem:', error);
             });
-        }
+    }
 
 
     const resetMeme = () => {
@@ -37,6 +37,17 @@ export const GenerateImage = () => {
     const closeMeme = () => {
         setImage(null);
     };
+
+    const validateInput = () => {
+        // Validate that the filename given is not empty and contains 15 characters or less
+        var filenameInput = document.getElementById('filenameInput').value;
+        if (filenameInput !== "" && filenameInput.length <= 15) {
+            generateMeme();
+        }
+        else {
+            alert("Filename cannot be empty or above 15 characters.");
+        }
+    }
 
     
 
@@ -50,7 +61,7 @@ export const GenerateImage = () => {
             <Button
                 primary
                 margin="0 1rem 1rem 0"
-                handleClick={generateMeme}
+                handleClick={validateInput}
                 isDisabled={!meme.state.imageSelected}
             >
                 Generate a new MEME
