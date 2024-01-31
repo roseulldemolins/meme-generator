@@ -174,7 +174,6 @@ const TextImage = () => {
                 </Label>
                 <Input
                     intype="text"
-                    max="15"
                     id="filenameInput"
                     onChange={handleFilename}
                     value={meme.state.filename}
