@@ -30,6 +30,8 @@ const UpdateImage = () => {
 
         if (!meme.state.imageSelected) {
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
+            console.log("UpdateImage", meme.state.imageSelected);
+
         }
     };
 
