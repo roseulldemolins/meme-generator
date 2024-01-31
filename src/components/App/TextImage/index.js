@@ -14,12 +14,32 @@ const TextImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
-    const handleTopText = e => {
-        meme.dispatch({ type: 'UPDATE_TOP', payload: e.target.value });
+    const handleTopText = input => {
+        meme.dispatch({ type: 'UPDATE_TOP', payload: limitWordsInString(input,meme.state.topTextSize) });
     };
 
-    const handleBottomText = e => {
-        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: e.target.value });
+    const limitWordsInString = (inputText,textSize) =>{
+        let words = inputText.split(' ')
+        let output = []
+        //rough calculation for how many characters we can fit in one word based on textsize
+        let maxWordLength = (45 / textSize)-1
+
+        //work out max x offset based on characters in line a line how?
+        
+
+        words.forEach((word,i) => {
+            if(word.length > maxWordLength){
+                let trimmedWord = word.slice(0,maxWordLength)
+                output.push(trimmedWord)
+            }else {
+                output.push(word)
+            }
+        });
+        return output.join(' ')
+    }
+
+    const handleBottomText = input => {
+        meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInString(input,meme.state.bottomTextSize) });
     };
 
     const handleTextPos = (e, pos) => {
@@ -33,14 +53,28 @@ const TextImage = () => {
         }
     };
 
+    //add x-position for text
+    const handleTextPosXAxis = (e, pos) => {
+        if (pos === 'top') {
+            meme.dispatch({ type: 'UPDATE_TOP_POS_X', payload: e.target.value });
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_BOTTOM_POS_X',
+                payload: e.target.value,
+            });
+        }
+    };
+
     const handleTextSize = (e, pos) => {
         if (pos === 'top') {
             meme.dispatch({ type: 'UPDATE_TOP_SIZE', payload: e.target.value });
+            handleTopText(meme.state.topText)
         } else {
             meme.dispatch({
                 type: 'UPDATE_BOTTOM_SIZE',
                 payload: e.target.value,
             });
+            handleBottomText(meme.state.bottomText)
         }
     };
 
@@ -50,8 +84,11 @@ const TextImage = () => {
     }
 
     const handleTextOutside = e => {
-        console.log(e.target.value);
         meme.dispatch({ type: 'TEXT_OUTSIDE' });
+    };
+
+    const handleFilename = e => {
+        meme.dispatch({ type: 'UPDATE_FILENAME', payload: e.target.value });
     };
 
     // Render
@@ -69,7 +106,7 @@ const TextImage = () => {
                 <Input
                     intype="text"
                     id="text-top"
-                    onChange={handleTopText}
+                    onChange={e=>handleTopText(e.target.value)}
                     value={meme.state.topText}
                     disabled={!meme.state.imageSelected}
                 />
@@ -92,7 +129,7 @@ const TextImage = () => {
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-top">
-                        Text position <span>[ {meme.state.topTextPos} ]</span>
+                        Text position Y-Axis <span>[ {meme.state.topTextPos} ]</span>
                     </Label>
                     <Range
                         id="pos-top"
@@ -103,6 +140,23 @@ const TextImage = () => {
                             !meme.state.imageSelected || meme.state.textOutside
                         }
                         onChange={e => handleTextPos(e, 'top')}
+                    />
+                </div>
+
+                {/* For changing x-position of text */}
+                <div className={meme.state.textOutside ? 'inactive' : ''}>
+                    <Label htmlFor="pos-top-X">
+                        Text position X-Axis <span>[ {meme.state.topTextPosX} ]</span>
+                    </Label>
+                    <Range
+                        id="pos-top-X"
+                        min="-30"
+                        max="30"
+                        value={meme.state.topTextPosX}
+                        disabled={
+                            !meme.state.imageSelected || meme.state.textOutside
+                        }
+                        onChange={e => handleTextPosXAxis(e, 'top')}
                     />
                 </div>
                 <div>
@@ -129,7 +183,7 @@ const TextImage = () => {
                 <Input
                     intype="text"
                     id="text-bottom"
-                    onChange={handleBottomText}
+                    onChange={e=>handleBottomText(e.target.value)}
                     value={meme.state.bottomText}
                     disabled={!meme.state.imageSelected}
                 />
@@ -138,7 +192,7 @@ const TextImage = () => {
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-bottom">
-                        Text position{' '}
+                        Text position Y-Axis {' '}
                         <span>[ {meme.state.bottomTextPos} ]</span>
                     </Label>
                     <Range
@@ -150,6 +204,22 @@ const TextImage = () => {
                             !meme.state.imageSelected || meme.state.textOutside
                         }
                         onChange={e => handleTextPos(e, 'bottom')}
+                    />
+                </div>
+                {/* For changing x-position of text */}
+                <div className={meme.state.textOutside ? 'inactive' : ''}>
+                    <Label htmlFor="pos-bottom-X">
+                        Text position X-Axis <span>[ {meme.state.bottomTextPosX} ]</span>
+                    </Label>
+                    <Range
+                        id="pos-bottom-X"
+                        min="-30"
+                        max="30"
+                        value={meme.state.bottomTextPosX}
+                        disabled={
+                            !meme.state.imageSelected || meme.state.textOutside
+                        }
+                        onChange={e => handleTextPosXAxis(e, 'bottom')}
                     />
                 </div>
                 <div>
@@ -180,6 +250,21 @@ const TextImage = () => {
             </WrapInput>
 
             <TextLegenda>* Both of the above texts are optional.</TextLegenda>
+
+            {/* Filename input */}
+            <WrapInput>
+                <br />
+                <Label primary htmlFor="filenameInput">
+                    Filename
+                </Label>
+                <Input
+                    intype="text"
+                    id="filenameInput"
+                    onChange={handleFilename}
+                    value={meme.state.filename}
+                    disabled={!meme.state.imageSelected}
+                />
+            </WrapInput>
         </TextWrapper>
     );
 };

@@ -6,7 +6,7 @@ const NoImage = styled.div`
     text-align: center;
     font-weight: ${({ theme }) => theme.typography.bold};
     font-size: 2em;
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.black};
 
     @media all and (max-width: ${({ theme }) => theme.layout.xsWidth}) {
         font-size: 1.5em;

@@ -8,12 +8,12 @@ const Wrapper = styled.div.attrs({
 })`
     position: relative;
     width: 100%;
+    overflow: hidden;
     background: ${({ theme }) => theme.colors.black};
 `;
 
 const Text = styled.div`
-    position: ${props => (props.outside ? 'static' : 'absolute')};
-    left: 0;
+    position: ${props => (props.outside ? 'static' : 'absolute')}; 
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
@@ -27,12 +27,14 @@ const Text = styled.div`
         props.pos === 'top' &&
         css`
             top: ${props => props.posPlace}%;
+            left: ${props => props.posPlaceX}%;
         `}
     ${props =>
         !props.outside &&
         props.pos === 'bottom' &&
         css`
             bottom: ${props => props.posPlace}%;
+            left: ${props => props.posPlaceX}%;
         `}
     font-family: ${props => props.fontFamily}        
 `;
@@ -58,6 +60,7 @@ const ActiveImage = () => {
                 <Text
                     pos="top"
                     posPlace={meme.state.topTextPos}
+                    posPlaceX={meme.state.topTextPosX}
                     fsize={meme.state.topTextSize}
                     outside={meme.state.textOutside}
                     fontFamily={meme.state.fontSelected}
@@ -73,6 +76,7 @@ const ActiveImage = () => {
                 <Text
                     pos="bottom"
                     posPlace={meme.state.bottomTextPos}
+                    posPlaceX={meme.state.bottomTextPosX}
                     fsize={meme.state.bottomTextSize}
                     outside={meme.state.textOutside}
                     fontFamily={meme.state.fontSelected}
