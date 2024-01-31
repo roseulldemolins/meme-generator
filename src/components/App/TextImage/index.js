@@ -75,6 +75,7 @@ const TextImage = () => {
     };
 
     //add alignment for text
+    //test comment
     const handleTextAlignment = (align) => {
 
         //Set x-axis values to zero
