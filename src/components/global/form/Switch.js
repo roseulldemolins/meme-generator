@@ -62,17 +62,17 @@ const StyledSwitch = styled.div`
  * @param {boolean} disabled - Control the possibility of interaction
  * @param {event} onSwitch - Event handler at the switch of the element
  */
-const Switch = ({ label, checked, disabled, onSwitch }) => {
+const Switch = ({ id, label, checked, disabled, onSwitch }) => {
     return (
         <StyledSwitch>
             <input
-                id="text-include"
+                id={id}
                 type="checkbox"
                 checked={checked}
                 disabled={disabled}
                 onChange={onSwitch}
             />
-            <label htmlFor="text-include">{label}</label>
+            <label htmlFor={id}>{label}</label>
         </StyledSwitch>
     );
 };

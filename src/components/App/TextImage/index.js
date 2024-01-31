@@ -83,6 +83,11 @@ const TextImage = () => {
         meme.dispatch({type: 'TEXT_FONT', payload: e.target.value})
     }
 
+    const handleBlackAndWhiteToggle = e => {
+        meme.dispatch({type: 'BLACK_WHITE'});
+
+    }
+
     const handleTextOutside = e => {
         meme.dispatch({ type: 'TEXT_OUTSIDE' });
     };
@@ -241,11 +246,23 @@ const TextImage = () => {
             {/* Text outside */}
             <WrapInput>
                 <Switch
+                id = " outside_text_switch"
                     primary={true}
                     label="Text outside the image"
                     checked={meme.state.textOutside}
                     disabled={!meme.state.imageSelected}
                     onSwitch={handleTextOutside}
+                />
+            </WrapInput>
+
+            <WrapInput>
+                <Switch
+                    id = "switch_black_and_white"
+                    primary={true}
+                    label="Make image black and white"
+                    checked={meme.state.blackAndWhite}
+                    disabled={!meme.state.imageSelected}
+                    onSwitch={handleBlackAndWhiteToggle}
                 />
             </WrapInput>
 

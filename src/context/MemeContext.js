@@ -11,6 +11,7 @@ const initialState = {
     bottomTextSize: 2,
     textOutside: false,
     imageSelected: null,
+    blackAndWhite: false,
     fontSelected:null,
     filename: 'my-awesome-meme'
 };
@@ -67,6 +68,11 @@ const StateProvider = ({ children }) => {
                     ...state,
                     textOutside: !state.textOutside,
                 };
+             case 'BLACK_WHITE':
+                return {
+                     ...state,
+                     blackAndWhite: !state.blackAndWhite,
+                    };
             case 'IMAGE_SELECTED':
                 return {
                     ...state,
@@ -86,6 +92,8 @@ const StateProvider = ({ children }) => {
                 return initialState;
             default:
                 throw new Error();
+
+            
         }
     }, initialState);
     return <Provider value={{ state, dispatch }}>{children}</Provider>;
