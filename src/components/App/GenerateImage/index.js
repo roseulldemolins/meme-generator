@@ -13,7 +13,6 @@ export const GenerateImage = () => {
     // Local state
     const [image, setImage] = useState(null);
 
-
     // Methods
     function generateMeme() {
         htmlToImage
@@ -32,6 +31,7 @@ export const GenerateImage = () => {
 
     const resetMeme = () => {
         meme.dispatch({ type: 'RESET_MEME' });
+        setImage(null);
     };
 
     const closeMeme = () => {

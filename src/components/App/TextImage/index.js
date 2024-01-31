@@ -57,7 +57,6 @@ const TextImage = () => {
     };
 
     const handleTextOutside = e => {
-        console.log(e.target.value);
         meme.dispatch({ type: 'TEXT_OUTSIDE' });
     };
 
