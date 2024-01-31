@@ -8,8 +8,7 @@ import ImageCaption from './ImageCaption';
 import ActiveImage from './ActiveImage';
 import NoImage from './NoImage';
 
-
-const UpdateImage = () => {
+const  UpdateImage = () => {
     // Global state
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
@@ -36,7 +35,7 @@ const UpdateImage = () => {
         if (!meme.state.imageSelected) {
 
             meme.dispatch({ type: 'IMAGE_SELECTED', payload: newImage });
-
+            
         }
         };
    
@@ -61,7 +60,7 @@ const UpdateImage = () => {
 
             {/* the corresponding input component needs to have the onClick atribute set to 
             null the value of the event object ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component */}
-            <ImageInput onChange={handleLocalImage} onClick={(e)=> {e.currentTarget.value = null}}/>
+            <ImageInput onChange={handleLocalImage} onClick={(e)=> {e.currentTarget.value = null}} disabled={meme.state.imageSelected}/>
             {caption}
         </ImageWrapper>
     );
