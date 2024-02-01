@@ -15,8 +15,10 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "3.4.3",
+        "shortid": "^2.2.16",
         "styled-components": "^5.1.1",
-        "typeface-open-sans": "0.0.75"
+        "typeface-open-sans": "0.0.75",
+        "uuid": "^9.0.1"
     },
     "scripts": {
         "start": "react-scripts --openssl-legacy-provider start",
