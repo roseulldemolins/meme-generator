@@ -9,7 +9,10 @@ const Label = styled.label`
         transform: translateY(-1px);
         font-size: 0.75em;
         color: ${({ theme }) => theme.colors.label};
-    }
+    };
+    label {
+        color: ${({ theme }) => theme.colors.label};
+
 `;
 
 export default Label;
