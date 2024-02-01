@@ -38,7 +38,14 @@ const  UpdateImage = () => {
         
         const newImages = [];
 
-        newImages.push({
+        if(images.length === 1){
+            newImages.push({
+                name: images[0].name,
+                size: images[0].size,
+                path: URL.createObjectURL(images[0])
+            });
+        }else if(images.length > 1){
+                        newImages.push({
             name: images[0].name,
             size: images[0].size,
             path: URL.createObjectURL(images[0])
@@ -49,6 +56,9 @@ const  UpdateImage = () => {
             size: images[1].size,
             path: URL.createObjectURL(images[1])
         });
+        }else{
+            throw new Error();
+        }
 
         //code to work with all seleted images
         // for(let i=0; i < images.length; i++){
