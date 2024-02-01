@@ -18,14 +18,16 @@ const App = () => {
         body: "#1c1c1c",
         title: "#fff",
        h1: "#Ffc0cb",
-       text: "#FAADF1"
+       text: "#FAADF1",
+       label : "#f1f0f2"
         
       };
       const lightTheme = {
         body: "#ff8fab",
         title: "#bd93f9",
         h1: "#bd93f9", 
-        text: "#b200ed", 
+        text: "#000000", 
+        label: "#000000"
        
        
       };
