@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from '../../global/Title';
 
+
 const Wrapper = styled.section`
     position: fixed;
     top: 0;
@@ -50,12 +51,19 @@ export const Meme = ({ path, close }) => {
     return (
         <Wrapper onClick={close}>
             <InnerContainer>
+            
                 <MemeTitle as="h4" fsize="1.5" margin="0 0 2rem">
                     Click the image to download
                 </MemeTitle>
+
+                
                 <a href={path} download={getFilename()}>
                     <Image src={path} alt="Generated Meme" />
                 </a>
+            <OurComponent/>
+               
+                {/* <Image src={selectedOption} alt="select options" /> */}
+              
             </InnerContainer>
             <Close>Close</Close>
         </Wrapper>
