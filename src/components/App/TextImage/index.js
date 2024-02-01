@@ -150,12 +150,14 @@ const TextImage = () => {
                     <Label htmlFor='font-top'>
                         Font
                     </Label>
+                    <label title='font-selector'>
                     <select name='font' onChange={e => handleTextFont(e)} disabled={!meme.state.imageSelected}>
                         <option className='montserrat' value={"'Montserrat', sans-serif"}>Montserrat</option>
                         <option className='single' value={"'Single Day', cursive"}>Single Day</option>
                         <option className='roboto' value={"'Roboto', sans-serif"}>roboto</option>
                         <option className='dancing' value={"'Dancing Script', cursive"}>dancing-script</option>
                     </select>
+                    </label>
                 </div>
             </WrapInput>
 
@@ -276,7 +278,7 @@ const TextImage = () => {
             {/* Text alignment buttons */}
             <WrapInput>
                 <Label htmlFor="text-align">
-                            Text Align <span>[ {meme.state.textAlign} ]</span>
+                    Text Align <span>[ {meme.state.textAlign} ]</span>
                 </Label>
 
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">

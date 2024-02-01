@@ -11,8 +11,8 @@ const Input = styled.input.attrs(props => ({
     height: 40px;
     line-height: 40px;
     padding: 0 1rem;
-    background-color: ${(props) => props.theme.body};
-    color: ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.black};
     border: none;
     border-radius: 4px;
     outline: none;
