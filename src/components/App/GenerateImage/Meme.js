@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Title from '../../global/Title';
-
+ 
 
 const Wrapper = styled.section`
     position: fixed;
@@ -60,10 +60,7 @@ export const Meme = ({ path, close }) => {
                 <a href={path} download={getFilename()}>
                     <Image src={path} alt="Generated Meme" />
                 </a>
-            <OurComponent/>
-               
-                {/* <Image src={selectedOption} alt="select options" /> */}
-              
+                               
             </InnerContainer>
             <Close>Close</Close>
         </Wrapper>

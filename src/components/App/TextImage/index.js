@@ -232,6 +232,7 @@ const TextImage = () => {
 
             <TextLegenda>* Both of the above texts are optional.</TextLegenda>
 
+{/* get the */}
             {/* Filename input */}
             <WrapInput>
                 <br />
