@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 const WrapInput = styled.div`
     margin-bottom: 1rem;
+    
     ${props =>
         props.flex &&
         css`
@@ -16,7 +17,11 @@ const WrapInput = styled.div`
                     opacity: 0.25;
                 }
             }
+        
         `}
+        
+    };
+
 `;
 
 export default WrapInput;

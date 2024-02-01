@@ -8,6 +8,7 @@ const TextWrapper = styled.section`
     &.active {
         opacity: 1;
     }
+    color: ${(props) => props.theme.label};
 
     @media all and (max-width: ${({ theme }) => theme.layout.smWidth}) {
         width: 100%;
