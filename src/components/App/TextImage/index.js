@@ -361,7 +361,7 @@ const TextImage = () => {
             <WrapInput>
                 <div>
                     <Label htmlFor='image-size'>
-                        Font
+                        Image Size
                     </Label>
                     <select name='imageSize' onChange={e => handleImageSize(e)} disabled={!meme.state.imageSelected}>
                         <option className='montserrat' value={'Small'}>Small</option>
