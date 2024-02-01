@@ -124,6 +124,10 @@ const TextImage = () => {
         meme.dispatch({ type: 'UPDATE_FILENAME', payload: e.target.value });
     };
 
+    const handleImageSize = e => {
+        
+    }
+
     // Render
     return (
         <TextWrapper className={meme.state.imageSelected ? 'active' : ''}>
@@ -352,6 +356,19 @@ const TextImage = () => {
                     value={meme.state.filename}
                     disabled={!meme.state.imageSelected}
                 />
+            </WrapInput>
+
+            <WrapInput>
+                <div>
+                    <Label htmlFor='image-size'>
+                        Font
+                    </Label>
+                    <select name='imageSize' onChange={e => handleImageSize(e)} disabled={!meme.state.imageSelected}>
+                        <option className='montserrat' value={'Small'}>Small</option>
+                        <option className='montserrat' value={'Medium'}>Medium</option>
+                        <option className='montserrat' value={'Large'}>Large</option>
+                    </select>
+                </div>
             </WrapInput>
         </TextWrapper>
     );
