@@ -3,10 +3,7 @@ import styled, { css } from 'styled-components';
 const Title = styled.h1`
     margin: ${({ margin }) => margin};
     font-size: ${({ fsize }) => fsize}em;
-    color: ${props =>
-        props.primary
-            ? props.theme.colors.primary
-            : props.theme.colors.tertiary};
+    color: ${(props) => props.theme.text};
 
     @media all and (max-width: ${({ theme }) => theme.layout.xsWidth}) {
         ${props =>

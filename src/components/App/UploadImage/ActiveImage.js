@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { MemeContext } from '../../../context/MemeContext';
 import styled, { css } from 'styled-components';
+import ImageCaption from './ImageCaption';
+import shortid from 'shortid';
 
 // Sub components
 const Wrapper = styled.div.attrs({
@@ -13,7 +15,9 @@ const Wrapper = styled.div.attrs({
 `;
 
 const Text = styled.div`
-    position: ${props => (props.outside ? 'static' : 'absolute')}; 
+    position: ${props => (props.outside ? 'static' : 'absolute')};
+    left: 0;
+    color:rgb(255, 255, 255);
     width: 100%;
     padding: ${props => (props.outside ? '0.25rem 1rem' : '0 1rem')};
     text-transform: uppercase;
@@ -28,6 +32,7 @@ const Text = styled.div`
         css`
             top: ${props => props.posPlace}%;
             left: ${props => props.posPlaceX}%;
+            color:${props.posColour};
         `}
     ${props =>
         !props.outside &&
@@ -35,6 +40,7 @@ const Text = styled.div`
         css`
             bottom: ${props => props.posPlace}%;
             left: ${props => props.posPlaceX}%;
+            color: ${props.posColour}
         `}
     font-family: ${props => props.fontFamily}        
 `;
@@ -53,7 +59,20 @@ const ActiveImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
+<<<<<<< HEAD
     console.log(meme.state.fontSelected);
+    console.log(meme.state.imageSelected);
+
+    return ( <>
+            {meme.state.imageSelected.map(image => ( 
+          
+                <Wrapper key={shortid.generate()}>
+                    {meme.state.topText && (
+                        <Text
+                            pos="top"
+                            posPlace={meme.state.topTextPos}
+                            posPlaceX={meme.state.topTextPosX}
+=======
     return (
         <Wrapper>
             {meme.state.topText && (
@@ -61,11 +80,26 @@ const ActiveImage = () => {
                     pos="top"
                     posPlace={meme.state.topTextPos}
                     posPlaceX={meme.state.topTextPosX}
+                    posColour={meme.state.topTextColour}
+>>>>>>> main
                     fsize={meme.state.topTextSize}
-                    align={meme.state.textAlign}
+                            align={meme.state.textAlign}
                     outside={meme.state.textOutside}
-                    fontFamily={meme.state.fontSelected}
+                                fontFamily={meme.state.fontSelected}
                 >
+<<<<<<< HEAD
+                            {meme.state.topText}
+                        </Text>
+                                )}
+            
+                <Image path={image.path} altimg={image.name}/>
+            
+                    {meme.state.bottomText && (
+                        <Text
+                            pos="bottom"
+                            posPlace={meme.state.bottomTextPos}
+                            posPlaceX={meme.state.bottomTextPosX}
+=======
                     {meme.state.topText}
                 </Text>
             )}
@@ -78,16 +112,23 @@ const ActiveImage = () => {
                     pos="bottom"
                     posPlace={meme.state.bottomTextPos}
                     posPlaceX={meme.state.bottomTextPosX}
+                    posColour={meme.state.topTextColour}
+>>>>>>> main
                     fsize={meme.state.bottomTextSize}
-                    align={meme.state.textAlign}
+                            align={meme.state.textAlign}
                     outside={meme.state.textOutside}
-                    fontFamily={meme.state.fontSelected}
+                                fontFamily={meme.state.fontSelected}
                 >
-                    {meme.state.bottomText}
-                </Text>
+                            {meme.state.bottomText}
+                        </Text>
+                                )}
+                <ImageCaption image={image}/>
+                
+                </Wrapper>
+          
+                )
             )}
-        </Wrapper>
-    );
+    </> );
 };
 
 export default ActiveImage;
