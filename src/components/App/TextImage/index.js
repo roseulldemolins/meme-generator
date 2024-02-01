@@ -243,7 +243,9 @@ const TextImage = () => {
                     <Label htmlFor="colour-top">
                     Text Colour <span>[{meme.state.topTextColour}]</span>
                     </Label>
+                    <label title='color-picker'>
                     <Input id = "colour-top-picker" type="text" data-coloris/>
+                    </label>
                     <Switch className="top-switch"id ="colour-top" onSwitch={()=>handleTopColour("top")}></Switch>
 
 
