@@ -4,6 +4,8 @@ const ImageLabel = styled.label.attrs({
     htmlFor: 'up-img',
 })`
     display: flex;
+    flex-direction: column;
+    wrap: nowrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
