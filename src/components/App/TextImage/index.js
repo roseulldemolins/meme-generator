@@ -46,7 +46,38 @@ const TextImage = () => {
         });
         return output.join(' ')
     }
+    const handleTopColour = (pos) => {
+        console.log('pos',pos)
+        let colorval = document.getElementById("colour-top-picker")
+        console.log(colorval.value)
+        if (pos === 'top') {
+            meme.dispatch({ type: 'UPDATE_TOP_COLOUR', payload: colorval.value });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_TOP_COLOUR',
+                payload: colorval.value,
+            });
+            colorval=null;
+        }
 
+    }
+    
+    const handleBottomColour = (pos) => {
+        alert("Reached");
+        let colorval = document.getElementById("clr-picker")
+        if (pos === 'bottom') {
+            meme.dispatch({ type: 'UPDATE_BOTTOM_COLOUR', payload: colorval.style.color });
+            colorval=null;
+        } else {
+            meme.dispatch({
+                type: 'UPDATE_BOTTOM_COLOUR',
+                payload: colorval.style.color,
+            });
+            colorval=null;
+        }
+        
+    }
     const handleBottomText = input => {
         meme.dispatch({ type: 'UPDATE_BOTTOM', payload: limitWordsInString(input,meme.state.bottomTextSize) });
     };
@@ -150,12 +181,14 @@ const TextImage = () => {
                     <Label htmlFor='font-top'>
                         Font
                     </Label>
+                    <label title='font-selector'>
                     <select name='font' onChange={e => handleTextFont(e)} disabled={!meme.state.imageSelected}>
                         <option className='montserrat' value={"'Montserrat', sans-serif"}>Montserrat</option>
                         <option className='single' value={"'Single Day', cursive"}>Single Day</option>
                         <option className='roboto' value={"'Roboto', sans-serif"}>roboto</option>
                         <option className='dancing' value={"'Dancing Script', cursive"}>dancing-script</option>
                     </select>
+                    </label>
                 </div>
             </WrapInput>
 
@@ -205,6 +238,15 @@ const TextImage = () => {
                         disabled={!meme.state.imageSelected}
                         onChange={e => handleTextSize(e, 'top')}
                     />
+                </div>
+                <div id ="colour-top">
+                    <Label htmlFor="colour-top">
+                    Text Colour <span>[{meme.state.topTextColour}]</span>
+                    </Label>
+                    <Input id = "colour-top-picker" type="text" data-coloris/>
+                    <Switch className="top-switch"id ="colour-top" onSwitch={()=>handleTopColour("top")}></Switch>
+
+
                 </div>
             </WrapInput>
 
@@ -276,7 +318,7 @@ const TextImage = () => {
             {/* Text alignment buttons */}
             <WrapInput>
                 <Label htmlFor="text-align">
-                            Text Align <span>[ {meme.state.textAlign} ]</span>
+                    Text Align <span>[ {meme.state.textAlign} ]</span>
                 </Label>
 
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">

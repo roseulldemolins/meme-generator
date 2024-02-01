@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import { MemeContext } from '../../../context/MemeContext';
+import React from 'react';
 import styled from 'styled-components';
 import { formatSizeUnits } from '../../../utils';
 
 const Caption = styled.div`
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     p {
         font-size: 0.875em;
         b {
@@ -14,19 +13,16 @@ const Caption = styled.div`
     }
 `;
 
-const ImageCaption = () => {
-    // Global state
-    // state to read and dispatch to modify
-    const meme = useContext(MemeContext);
+const ImageCaption = ({image}) => {
 
     return (
         <Caption>
             <p>
-                <b>Image name:</b> {meme.state.imageSelected.name}
+                <b>Image name:</b> {image.name}
             </p>
             <p>
                 <b>Image size:</b>{' '}
-                {formatSizeUnits(meme.state.imageSelected.size)}
+                {formatSizeUnits(image.size)}
             </p>
         </Caption>
     );

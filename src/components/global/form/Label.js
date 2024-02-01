@@ -11,7 +11,7 @@ const Label = styled.label`
         display: inline-block;
         transform: translateY(-1px);
         font-size: 0.75em;
-        color: ${({ theme }) => theme.colors.quaternary};
+        color: ${({ theme }) => theme.colors.white};
     }
 `;
 

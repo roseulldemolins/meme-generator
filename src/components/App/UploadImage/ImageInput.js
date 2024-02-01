@@ -4,7 +4,9 @@ const ImageInput = styled.input.attrs({
     id: 'up-img',
     ref: "upload",
     type: 'file',
+    multiple: true,
     accept: 'image/*',
+
 
 })`
     position: absolute;
