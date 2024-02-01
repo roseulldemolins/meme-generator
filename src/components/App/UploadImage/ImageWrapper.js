@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ImageWrapper = styled.div`
     position: relative;
-    width: 50%;
+     width: 50%;
     padding-right: 4rem;
     transition: height 0.4s;
 
