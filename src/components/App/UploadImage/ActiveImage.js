@@ -59,7 +59,6 @@ const ActiveImage = () => {
     // state to read and dispatch to modify
     const meme = useContext(MemeContext);
 
-<<<<<<< HEAD
     console.log(meme.state.fontSelected);
     console.log(meme.state.imageSelected);
 
@@ -72,22 +71,11 @@ const ActiveImage = () => {
                             pos="top"
                             posPlace={meme.state.topTextPos}
                             posPlaceX={meme.state.topTextPosX}
-=======
-    return (
-        <Wrapper>
-            {meme.state.topText && (
-                <Text
-                    pos="top"
-                    posPlace={meme.state.topTextPos}
-                    posPlaceX={meme.state.topTextPosX}
-                    posColour={meme.state.topTextColour}
->>>>>>> main
                     fsize={meme.state.topTextSize}
                             align={meme.state.textAlign}
                     outside={meme.state.textOutside}
                                 fontFamily={meme.state.fontSelected}
                 >
-<<<<<<< HEAD
                             {meme.state.topText}
                         </Text>
                                 )}
@@ -99,21 +87,6 @@ const ActiveImage = () => {
                             pos="bottom"
                             posPlace={meme.state.bottomTextPos}
                             posPlaceX={meme.state.bottomTextPosX}
-=======
-                    {meme.state.topText}
-                </Text>
-            )}
-            <Image
-                path={meme.state.imageSelected.path}
-                altimg={meme.state.imageSelected.name}
-            />
-            {meme.state.bottomText && (
-                <Text
-                    pos="bottom"
-                    posPlace={meme.state.bottomTextPos}
-                    posPlaceX={meme.state.bottomTextPosX}
-                    posColour={meme.state.topTextColour}
->>>>>>> main
                     fsize={meme.state.bottomTextSize}
                             align={meme.state.textAlign}
                     outside={meme.state.textOutside}
