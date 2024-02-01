@@ -8,7 +8,6 @@ import Label from '../../global/form/Label';
 import Input from '../../global/form/Input';
 import Range from '../../global/form/Range';
 import Switch from '../../global/form/Switch';
-import Span from '../../global/form/Span';
 import { ButtonGroup, IconButton } from '@mui/material';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
@@ -196,7 +195,7 @@ const TextImage = () => {
             <WrapInput flex>
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-top">
-                        Text position Y-Axis <Span>[ {meme.state.topTextPos} ]</Span>
+                        Text position Y-Axis <span>[ {meme.state.topTextPos} ]</span>
                     </Label>
                     <Range
                         id="pos-top"
@@ -213,7 +212,7 @@ const TextImage = () => {
                 {/* For changing x-position of text */}
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-top-X">
-                        Text position X-Axis <Span>[ {meme.state.topTextPosX} ]</Span>
+                        Text position X-Axis <span>[ {meme.state.topTextPosX} ]</span>
                     </Label>
                     <Range
                         id="pos-top-X"
@@ -228,7 +227,7 @@ const TextImage = () => {
                 </div>
                 <div>
                     <Label htmlFor="size-top">
-                        Text size <Span>[ {meme.state.topTextSize} ]</Span>
+                        Text size <span>[ {meme.state.topTextSize} ]</span>
                     </Label>
                     <Range
                         id="size-top"
@@ -242,7 +241,7 @@ const TextImage = () => {
                 </div>
                 <div id ="colour-top">
                     <Label htmlFor="colour-top">
-                    Text Colour <Span>[{meme.state.topTextColour}]</Span>
+                    Text Colour <span>[{meme.state.topTextColour}]</span>
                     </Label>
                     <label title='color-picker'>
                     <Input id = "colour-top-picker" type="text" data-coloris/>
@@ -271,7 +270,7 @@ const TextImage = () => {
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-bottom">
                         Text position Y-Axis {' '}
-                        <Span>[ {meme.state.bottomTextPos} ]</Span>
+                        <span>[ {meme.state.bottomTextPos} ]</span>
                     </Label>
                     <Range
                         id="pos-bottom"
@@ -287,7 +286,7 @@ const TextImage = () => {
                 {/* For changing x-position of text */}
                 <div className={meme.state.textOutside ? 'inactive' : ''}>
                     <Label htmlFor="pos-bottom-X">
-                        Text position X-Axis <Span>[ {meme.state.bottomTextPosX} ]</Span>
+                        Text position X-Axis <span>[ {meme.state.bottomTextPosX} ]</span>
                     </Label>
                     <Range
                         id="pos-bottom-X"
@@ -304,7 +303,7 @@ const TextImage = () => {
                 
                 <div>
                     <Label htmlFor="size-bottom">
-                        Text size <Span>[ {meme.state.bottomTextSize} ]</Span>
+                        Text size <span>[ {meme.state.bottomTextSize} ]</span>
                     </Label>
                     <Range
                         id="size-bottom"
@@ -321,7 +320,7 @@ const TextImage = () => {
             {/* Text alignment buttons */}
             <WrapInput>
                 <Label htmlFor="text-align">
-                    Text Align <Span>[ {meme.state.textAlign} ]</Span>
+                    Text Align <span>[ {meme.state.textAlign} ]</span>
                 </Label>
 
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">

@@ -8,7 +8,7 @@ const Label = styled.label`
         display: inline-block;
         transform: translateY(-1px);
         font-size: 0.75em;
-        color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.label};
     }
 `;
 

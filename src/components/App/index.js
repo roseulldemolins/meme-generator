@@ -19,7 +19,8 @@ const App = () => {
         title: "#fff",
        h1: "#Ffc0cb",
        text: "#FAADF1",
-       label : "#f1f0f2"
+       label : "#f1f0f2",
+       
         
       };
       const lightTheme = {
@@ -27,7 +28,8 @@ const App = () => {
         title: "#bd93f9",
         h1: "#bd93f9", 
         text: "#000000", 
-        label: "#000000"
+        label: "#000000",
+      
        
        
       };

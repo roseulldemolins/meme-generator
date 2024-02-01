@@ -1,19 +1,14 @@
 import styled, { css } from 'styled-components';
 const Span = styled.span`
-    margin: ${({ margin }) => margin};
-    font-size: ${({ fsize }) => fsize}em;
-    color: ${(props) => props.theme.label};
-
-    @media all and (max-width: ${({ theme }) => theme.layout.xsWidth}) {
-        ${props =>
-            props.primary &&
-            css`
-                font-size: 1.6em;
-                img {
-                    display: none;
-                }
-            `}
-    }
+display: block;
+margin-bottom: 0.5rem;
+color: ${(props) => props.theme.span};
+span {
+    display: inline-block;
+    transform: translateY(-1px);
+    font-size: 0.75em;
+    color: ${({ theme }) => theme.colors.black};
+}
 `;
 
 export default Span;
