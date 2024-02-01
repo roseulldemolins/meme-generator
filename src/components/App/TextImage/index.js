@@ -47,14 +47,16 @@ const TextImage = () => {
         return output.join(' ')
     }
     const handleTopColour = (pos) => {
-        let colorval = document.getElementById("clr-picker")
+        console.log('pos',pos)
+        let colorval = document.getElementById("colour-top-picker")
+        console.log(colorval.value)
         if (pos === 'top') {
-            meme.dispatch({ type: 'UPDATE_TOP_COLOUR', payload: colorval.style.color });
+            meme.dispatch({ type: 'UPDATE_TOP_COLOUR', payload: colorval.value });
             colorval=null;
         } else {
             meme.dispatch({
                 type: 'UPDATE_TOP_COLOUR',
-                payload: colorval.style.color,
+                payload: colorval.value,
             });
             colorval=null;
         }
@@ -245,8 +247,10 @@ const TextImage = () => {
                     <Label htmlFor="colour-top">
                     Text Colour <span>[{meme.state.topTextColour}]</span>
                     </Label>
-                    <Input id = "colour-top-picker" type="text" data-coloris />
+                    <Input id = "colour-top-picker" type="text" data-coloris/>
                     <Switch className="top-switch"id ="colour-top" onSwitch={()=>handleTopColour("top")}></Switch>
+
+
                 </div>
             </WrapInput>
 
