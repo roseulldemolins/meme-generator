@@ -5,6 +5,11 @@ import Button from '../../global/Button';
 import Wrapper from './Wrapper';
 import Meme from './Meme';
 import { func } from 'prop-types';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { memeOptions } from '../../../utils/data';
 
 export const GenerateImage = () => {
     // Global state
@@ -61,7 +66,15 @@ export const GenerateImage = () => {
         }
     }
 
-    
+    const [selectedMeme, setselectedMeme] = useState(null);
+    const handleChange = (event) => {
+      setselectedMeme(event.target.value)
+      // eslint-disable-next-line no-undef
+      const selectedMemeData = memeOptions.find(
+        (meme) => meme.name === event.target.value
+      );
+      meme.dispatch({ type: "IMAGE_SELECTED", payload: selectedMemeData });
+    };
 
     // Render
     let memeImage;
@@ -85,6 +98,28 @@ export const GenerateImage = () => {
             >
                 Reset MEME settings
             </Button>
+            <FormControl style={{ minWidth: 220 }} variant="filled">
+        <InputLabel id="demo-simple-select-label">Select Memes</InputLabel>
+        <Select
+          style={{
+            backgroundColor: "white",
+            borderRadius: "40px",
+            height: "45px",
+          }}
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selectedMeme}
+          label="Memes"
+          onChange={handleChange}
+        >
+          {memeOptions.map((meme) => (
+            <MenuItem key={meme.id} value={meme.name}>
+              {meme.name}
+            </MenuItem>
+          ))}
+
+        </Select>
+      </FormControl>
             {memeImage}
         </Wrapper>
     );
