@@ -81,10 +81,8 @@ const ActiveImage = () => {
               </Text>
             )}
 
-            <Image
-              path={meme.state.imageSelected.path}
-              altimg={meme.state.imageSelected.name}
-            />
+            
+            <Image path={image.path} altimg={image.name}/>
 
             {meme.state.bottomText && (
               <Text
